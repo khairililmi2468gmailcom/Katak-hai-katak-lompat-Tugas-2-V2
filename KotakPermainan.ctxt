@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=KotakPermainan
+comment0.text=\n\ Write\ a\ description\ of\ class\ KotakPermainan\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=j\ jk\ jm
+comment1.target=KotakPermainan(int,\ int,\ int)
+comment2.params=
+comment2.target=void\ generateAcak()
+comment3.params=
+comment3.target=void\ inisialisasiKotak()
+comment4.params=posisi
+comment4.target=int\ contain(int)
+numComments=5

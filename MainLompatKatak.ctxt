@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=MainLompatKatak
+comment0.text=\n\ Write\ a\ description\ of\ class\ MainLompatKatak\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=MainLompatKatak()
+comment2.params=
+comment2.target=void\ Gaskeun()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

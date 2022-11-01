@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Monster
+comment0.text=\n\ Write\ a\ description\ of\ class\ Monster\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Monster()
+comment2.params=nilai\ nama
+comment2.target=Monster(int,\ java.lang.String)
+comment3.params=
+comment3.target=int\ getNilai()
+comment4.params=nama
+comment4.target=void\ setNama(java.lang.String)
+numComments=5

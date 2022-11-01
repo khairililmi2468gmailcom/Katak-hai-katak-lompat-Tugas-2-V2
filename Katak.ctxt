@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Katak
+comment0.text=\n\ Write\ a\ description\ of\ class\ Katak\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Katak()
+comment2.params=
+comment2.target=int\ getPosisi()
+comment3.params=
+comment3.target=int\ getSkor()
+comment4.params=skorBaru
+comment4.target=void\ setSkor(int)
+comment5.params=
+comment5.target=int\ loncatDekat()
+comment6.params=
+comment6.target=int\ loncatJauh()
+comment7.params=
+comment7.target=int\ belakangDekat()
+comment8.params=
+comment8.target=int\ belakangJauh()
+numComments=9

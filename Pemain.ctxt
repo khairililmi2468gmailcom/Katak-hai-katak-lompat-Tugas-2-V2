@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Pemain
+comment0.text=\n\ Write\ a\ description\ of\ class\ Pemain\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=nama
+comment1.target=Pemain(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getNama()
+comment3.params=nama
+comment3.target=void\ setNama(java.lang.String)
+comment4.params=
+comment4.target=int\ getNilai()
+comment5.params=nilai
+comment5.target=void\ setNilai(int)
+numComments=6
