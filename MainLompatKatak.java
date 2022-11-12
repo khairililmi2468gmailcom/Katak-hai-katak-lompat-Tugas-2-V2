@@ -1,4 +1,8 @@
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * Write a description of class MainLompatKatak here.
@@ -8,6 +12,7 @@ import java.util.Scanner;
  */
 
 public class MainLompatKatak {
+    
     public Scanner sc = new Scanner(System.in);
     int difficulty;
     int i;
@@ -24,23 +29,26 @@ public class MainLompatKatak {
 
     /**
      * @apiNote
-     * void main kan
+     *          void main kan
      */
-    public void mainkan() {
+    public void mainkan() throws Exception, UnsupportedAudioFileException, IOException, LineUnavailableException {
+        Suara suara = new Suara();
+        KotakPermainan theGames;
+        Katak frog = new Katak();
         int decision;
         String namaPlayer;
         Pemain player;
-        KotakPermainan theGames;
-        Katak cangguk = new Katak();
+        
+      
+        suara.backMusic();
 
-
-        System.out.print("Insert the player...");
+        System.out.print("Masukkan nama : ");
         namaPlayer = sc.nextLine();
         player = new Pemain(namaPlayer);
         System.out.println("Player : " + namaPlayer);
 
         String difficulty_mode = "";
-        System.out.println("Choose your level..");
+        System.out.println("Pilih Level: ");
         System.out.println("1. Easy");
         System.out.println("2. Medium");
         System.out.println("3. Hard");
@@ -48,8 +56,7 @@ public class MainLompatKatak {
         difficulty = sc.nextInt();
 
         while (difficulty > 3 || difficulty < 1) {
-            System.out.printf("Only insert level 1 - 3! \n");
-            System.out.println("Your level: ");
+            System.out.println("Level : ");
             difficulty = sc.nextInt();
         }
         switch (difficulty) {
@@ -71,19 +78,19 @@ public class MainLompatKatak {
                 jm = 200;
                 break;
         }
-        System.out.printf("Pilihan level yang kamu pilih adalah: %s \n", difficulty_mode);
+        System.out.printf("Pilihan level : %s \n", difficulty_mode);
 
         theGames = new KotakPermainan(j, jk, jm);
-        for (i = 0; i < 100; i++) {
-            System.out.println(theGames.contain(i));
-        }
+        // for (i = 0; i < 100; i++) {
+        // System.out.println(theGames.contain(i));
+        // }
         System.out.println();
-        while (cangguk.getPosisi() < 499 && cangguk.getSkor() > 0) {
+        while (frog.getPosisi() < 499 && frog.getSkor() > 0) {
 
-            System.out.println("Position of cangguk: " + cangguk.getPosisi());
-            System.out.println("Score: " + cangguk.getSkor());
-            if (cangguk.getPosisi() == 499) {
-                System.out.println("One more jump.");
+            System.out.println("Posisi Katak: " + frog.getPosisi());
+            System.out.println("Skor: " + frog.getSkor());
+            if (frog.getPosisi() == 499) {
+                System.out.println("Loncat bro.");
             }
             System.out.println("Apakah anda ingin maju atau mundur? (a/d)");
             decision = sc.next().charAt(0);
@@ -110,34 +117,42 @@ public class MainLompatKatak {
                 System.out.print("Masukkan pilihan   : ");
 
                 moving = sc.nextInt();
-                moving = cangguk.getPosisi();
+                moving = frog.getPosisi();
             }
             if (decision == 'a' || decision == 'A') {
-                cangguk.belakangDekat();
-                cangguk.getPosisi();
+                frog.belakangDekat();
+                frog.getPosisi();
             } else if (decision == 'd' || decision == 'D') {
-                cangguk.loncatJauh();
+                frog.loncatJauh();
 
             }
-            if (cangguk.getPosisi() < 0) {
+
+            if (frog.getPosisi() < 0) {
                 System.out.println("Geme over");
-                System.exit(0);
-            }
-            cangguk.setSkor(cangguk.getSkor() + theGames.contain(cangguk.getPosisi()));
+                
 
-            if (theGames.contain(cangguk.getPosisi()) == 10) {
+                System.exit(0);
+
+            }
+
+            frog.setSkor(frog.getSkor() + theGames.contain(frog.getPosisi()));
+
+            if (theGames.contain(frog.getPosisi()) == 10) {
                 // get point and + 10 score
+                suara.playKoin();
                 System.out.println("Anda mendapatkan poin!");
-            } else if (theGames.contain(cangguk.getPosisi()) == -8) {
-                System.out.println("Ada Monster Snake!! :) poin dikurangi");
-            } else if (theGames.contain(cangguk.getPosisi()) == -14) {
-                System.out.println("Ada Monster Eagle!! :) poin dikurangi");
+            } else if (theGames.contain(frog.getPosisi()) == -8) {
+                suara.playMonster();
+                System.out.println("Ada  Buaya!! :) ditendang");
+            } else if (theGames.contain(frog.getPosisi()) == -14) {
+                suara.playPaus();
+                System.out.println("Ada Paus !! :) ditendang");
             }
         }
-        System.out.println("Done!");
-        player.setNilai(cangguk.getSkor());
+        System.out.println("Enter!");
+        player.setNilai(frog.getSkor());
         System.out.println("player : " + player.getNama());
-        System.out.println("Score : " + player.getNilai());
+        System.out.println("skor : " + player.getNilai());
 
         if (player.getNilai() < 0) {
             System.out.println("Maaf poin anda sudah habis, Game Over!");
@@ -151,23 +166,29 @@ public class MainLompatKatak {
     }
 
     /**
-     * main untuk semua permainan 
+     * main untuk semua permainan
+     * 
      * @param args
      */
-    public static void main(String[] args) {
-        MainLompatKatak hayuk = new MainLompatKatak();
+    public static void main(String[] args)
+            throws Exception, UnsupportedAudioFileException, IOException, LineUnavailableException {
+        MainLompatKatak play = new MainLompatKatak();
         char confirm = 'y';
+        Animasi animasiTeks = new Animasi();
+        animasiTeks.display();
         System.out.print("Hai katak, melompatlah!... \n");
-        System.out.println("Press any key to begin..");
-        hayuk.sc.nextLine();
+        System.out.println("Tekan Enter!!!");
+        play.sc.nextLine();
         while (confirm == 'y') {
-            hayuk.mainkan();
+            play.mainkan();
 
             System.out.print("Ingin bermain lagi ? (yes/no)   : ");
-            confirm = hayuk.sc.next().charAt(0);
+            confirm = play.sc.next().charAt(0);
         }
+        
         System.out.println("Terima Kasih!");
-        hayuk.sc.close();
+        
+        play.sc.close();
 
     }
 }
